@@ -34,3 +34,19 @@ function getHourglassMiddles(array){
 	allMiddles.pop();
 	return allMiddles;
 }
+
+function getHourglassSums(tops, middles, bottoms) {
+	//each top + bottom are arrays with 3-length subarrays
+	//The top[0] matches with the bottom[0]
+	//The middle[0] should also match
+	
+	let arrayOfLongArrays = []
+	//OUTER ARRAY 
+	for(var x = 0; x < tops.length; x++){
+		for(var y = 0; y < tops.length; y++){
+			let hourglass = [...tops[x][y], middles[x][y], ...bottoms[x][y]]
+			arrayOfLongArrays.push(hourglass)
+    	}
+    }
+	return arrayOfLongArrays
+}
