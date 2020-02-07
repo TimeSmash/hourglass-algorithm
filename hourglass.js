@@ -19,7 +19,7 @@ function getHourglassTops(array){
 function getHourglassBottoms(array){
 	let allBottoms = []
 	for (var i = 2; i < array.length; i++){
-		console.log(i)
+		// console.log(i)
     	allBottoms.push(simpleseg(array[i]))
 	}
 	return allBottoms
@@ -35,7 +35,7 @@ function getHourglassMiddles(array){
 	return allMiddles;
 }
 
-function getHourglassSums(tops, middles, bottoms) {
+function getHourglasses(tops, middles, bottoms) {
 	//each top + bottom are arrays with 3-length subarrays
 	//The top[0] matches with the bottom[0]
 	//The middle[0] should also match
@@ -49,4 +49,17 @@ function getHourglassSums(tops, middles, bottoms) {
     	}
     }
 	return arrayOfLongArrays
+}
+
+function getHourglassSumsForReal(array){
+	let tops = getHourglassTops(array)
+	let middles = getHourglassMiddles(array)
+	let bottoms = getHourglassBottoms(array)
+	console.log("tops", tops)
+	console.log("middles", middles)
+	console.log("bottoms", bottoms)
+	
+	let hourglasses = getHourglasses(tops,middles,bottoms)
+	let sums = hourglasses.map(hourglass => hourglass.reduce((a,b) => a+b) )
+	return sums
 }
